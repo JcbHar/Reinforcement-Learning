@@ -20,6 +20,11 @@ class Actor(nn.Module):
         mean = self.mean_layer(x)
         log_std = self.log_std_layer(x)
         std = torch.exp(log_std)
+        
+        #print("models, log_std:", log_std)
+        #print("models, mean:", mean)
+        #print("models, std:", std)
+        #std = torch.exp(log_std.clamp(-20, 2))
 
         distribution = torch.distributions.Normal(mean, std)
 
