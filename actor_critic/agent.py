@@ -41,10 +41,10 @@ class Agent():
         self.actor_optimizer  = optim.Adam(self.actor.parameters(), lr=actor_learning_rate)
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=critic_learning_rate)
 
-        self.log_alpha = torch.tensor(np.log(0.01), requires_grad=True, device=self.device) 
+        self.log_alpha = torch.tensor(np.log(0.001), requires_grad=True, device=self.device) 
         self.alpha_optimizer = optim.Adam([self.log_alpha], lr=3e-4)  
-        self.target_entropy = -0.5*self.num_actions 
-        self.alpha = 0.05
+        self.target_entropy = -0.1*self.num_actions 
+        self.alpha = 0.001
 
    
     def choose_action(self, state, action_space_low, action_space_high):
@@ -60,8 +60,9 @@ class Agent():
             distribution = self.actor.forward(state)
             
             # Samples a random action from that distribution
-            self.action = distribution.sample()
-        
+            #self.action = distribution.sample()
+            self.action = (distribution.rsample() * torch.exp(self.log_alpha)).clamp(-1, 1)
+            
         # ? Puts actor in training mode ?
         self.actor.train()
 
@@ -116,7 +117,8 @@ class Agent():
 
         #print("agent, states input to actor:", states)
             #assert not torch.isnan(states).any(), "State contains NaN!"
-        
+        print("Alpha:", self.alpha)
+
         action_distribution = self.actor(states)
         log_prob = action_distribution.log_prob(actions)
         entropy = action_distribution.entropy().mean()
@@ -137,7 +139,7 @@ class Agent():
         alpha_loss.backward()
         self.alpha_optimizer.step()
 
-        self.alpha = self.log_alpha.exp().clamp(min=0.001)
+        self.alpha = self.log_alpha.exp().clamp(min=0.01)
 
     
     def save(self, filepath):

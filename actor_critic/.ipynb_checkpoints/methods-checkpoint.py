@@ -29,7 +29,10 @@ def train(episodes, hyperparameters, env_name):
     save_path = "agent_checkpoint.pth"
     
     for i in range(episodes):
+        output_to_notebook()
         print("EPISODE:", i)
+        output_to_terminal()
+        
         states = env.reset()
         
         done = False
