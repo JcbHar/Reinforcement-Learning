@@ -12,8 +12,8 @@ To run the algorithm use the notebook in each algorithm folder.
 
 ## **Contents**
 
-- `actor_critic/`: Contains the Soft Actor-Critic (SAC) implementation on the HumanoidBulletEnv-v0.
-- `deep_q_learning/`: Includes Deep Q-Network for the Pendulum problem, using discretised action space.
+- `actor_critic/`: Contains the Soft Actor-Critic (SAC) implementation on the HumanoidBulletEnv-v0 environment.
+- `deep_q_learning/`: Includes Deep Q-Network for the Pendulum-v1 problem, using discretised action space.
 - `q_learning/`: Implements Q-Learning for on the FrozenLake-v1 environment.
 
 ---
