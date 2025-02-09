@@ -2,8 +2,8 @@
 
 This repository contains implementations of different reinforcement learning methods, including:
 
-- **Deep Q-Network (DQN)** – Uses a neural network to approximate Q-values and improve decision-making.
 - **Soft Actor-Critic (SAC)** – A method for handling continuous action spaces, balancing exploration and exploitation.
+- **Deep Q-Network (DQN)** – Uses a neural network to approximate Q-values and improve decision-making.
 - **Q-Learning** – A simple approach that updates values based on rewards to find the best actions.
 
 To run the algorithm use the notebook in each algorithm folder.
