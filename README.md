@@ -6,13 +6,15 @@ This repository contains implementations of different reinforcement learning met
 - **Soft Actor-Critic (SAC)** – A method for handling continuous action spaces, balancing exploration and exploitation.
 - **Q-Learning** – A simple approach that updates values based on rewards to find the best actions.
 
+To run the algorithm use the notebook in each algorithm folder.
+
 ---
 
 ## **Contents**
 
-- `actor_critic/`: Contains the Soft Actor-Critic (SAC) implementation.
-- `deep_q_learning/`: Includes Deep Q-Network for learning optimal actions.
-- `q_learning/`: Implements Q-Learning for discrete environments.
+- `actor_critic/`: Contains the Soft Actor-Critic (SAC) implementation on the HumanoidBulletEnv-v0.
+- `deep_q_learning/`: Includes Deep Q-Network for the Pendulum problem, using discretised action space.
+- `q_learning/`: Implements Q-Learning for on the FrozenLake-v1 environment.
 
 ---
 
@@ -20,3 +22,4 @@ This repository contains implementations of different reinforcement learning met
 ```bash
 git clone https://github.com/JcbHar/Reinforcement-Learning.git
 cd Reinforcement-Learning
+```
