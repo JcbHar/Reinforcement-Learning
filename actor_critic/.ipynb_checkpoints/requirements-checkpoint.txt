@@ -1,0 +1,15 @@
+# Core Dependencies
+numpy==2.2.2
+matplotlib==3.9.4
+networkx==3.2.1
+pillow==10.2.0
+
+# RL-Specific Libraries
+gymnasium==1.0.0
+pybullet==3.2.6
+cloudpickle==3.1.1
+
+# Deep Learning Libraries
+torch==2.5.1+cu118
+torchaudio==2.5.1+cu118
+torchvision==0.20.1+cu118
