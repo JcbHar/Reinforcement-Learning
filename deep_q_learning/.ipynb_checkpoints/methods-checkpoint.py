@@ -121,7 +121,10 @@ def simulate(episodes, hyperparameters, env_name):
 
 
 
-def save_plot(data, hyperparameters, data_name, number):
+def moving_average(data, window_size=50):
+    return np.convolve(data, np.ones(window_size)/window_size, mode='valid')
+
+def save_plot(data, hyperparameters, data_name, number, smooth=True, window_size=50):
     directory = os.path.join("plots", data_name)
     os.makedirs(directory, exist_ok=True)
 
@@ -134,7 +137,12 @@ def save_plot(data, hyperparameters, data_name, number):
     label = f"hs={hyperparameters['hidden_size']}, lr={hyperparameters['lr']}, γ={hyperparameters['gamma']}"
 
     plt.figure(figsize=(7, 5))
-    plt.plot(range(len(data)), data, label=label) 
+
+    if smooth:
+        smoothed_data = moving_average(data, window_size)
+        plt.plot(range(len(smoothed_data)), smoothed_data, label=label)
+    else:
+        plt.plot(range(len(data)), data, label=label)
 
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
